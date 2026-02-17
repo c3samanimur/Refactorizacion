@@ -7,13 +7,17 @@ public class EjercicioArrays {
     
     public static void main(String[] args) {
         int numAlumnos = 40;
-        //vector con las notas generadas
         int[] control = new int[numAlumnos];
 		int[] practicas;
 		float[] calificaciones;
         int maxNota;
         int minNota;
-        //Genera notas random entre 1 y 10
+        int indMinNota = 0;
+        int indMaxNota = 0;
+        double[] calif;
+        
+        
+
         for(int i=0; i < control.length; i++){
             control[i] = (int)(Math.random()*11);
         }
@@ -30,25 +34,27 @@ public class EjercicioArrays {
         }
       
         
-        //Empezamos el uso de listas para facilitar la tarea de índices.
-        List notas = Arrays.asList(control);
-        indMinNota = notas.indexOf(minNota) + 1;
-        indMaxNota = notas.indexOf(maxNota) + 1;
+     
+        for(int i = 0; i < control.length; i++) {
+        	if(control[i] == minNota) {
+        		indMinNota = i +1;
+        	}
+        	if(control[i] == maxNota) {
+        		indMaxNota = i +1;
+        	}
+        }
 
-        //Comprobamos el resultado del ejercicio   
+       
         System.out.println("Mínimo es: " + minNota);
         System.out.println("Máximo es: " + maxNota);
         System.out.println("Indice del mínimo es : " + indMinNota);
         System.out.println("Indice del máximo es : " + indMaxNota);
-        System.out.println("Lista de clase :" + Arrays.toString(listaClase));
-        System.out.println("Array de Notas :" + notas);
-        
-        //creamos el array de notas "practicas"
+       
         practicas = new int[numAlumnos];
         for(int i=0; i < practicas.length; i++){
             practicas[i] = (int)(Math.random()*11);
         }
-        //Creamos el vector calificaciones
+      
         calificaciones = new float[numAlumnos];
         for(int i = 0; i<control.length; i++){
             calificaciones[i] = 
@@ -74,7 +80,7 @@ public class EjercicioArrays {
             double porcentaje = (contador[i] / (double)numAlumnos) * 100;
             
    
-            System.out.println("Porcentale: " + porcentaje);
+            System.out.println("Porcentaje: " + porcentaje);
         }
         
         ArrayList<Integer> listaAprobados = new ArrayList<>();
@@ -88,8 +94,8 @@ public class EjercicioArrays {
             }
         }
 
-        System.out.println("Resumen de aprobados (nº lista): " + listaApr);
-        System.out.println("Resumen de suspensos (nº lista): " + listaSus);
+        System.out.println("Resumen de aprobados (nº lista): " + listaAprobados);
+        System.out.println("Resumen de suspensos (nº lista): " + listaSuspensos);
         
         calif = new double[40];
         for (int j=0; j<31; j++){
