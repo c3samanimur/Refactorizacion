@@ -28,6 +28,7 @@ public class EjercicioArrays {
         	}
         }
       
+        
         //Empezamos el uso de listas para facilitar la tarea de índices.
         List notas = Arrays.asList(control);
         indMinNota = notas.indexOf(minNota) + 1;
