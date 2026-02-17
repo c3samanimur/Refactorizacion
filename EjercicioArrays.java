@@ -59,26 +59,22 @@ public class EjercicioArrays {
         System.out.println("Prácticas      :" + Arrays.toString(practicas));
         System.out.println("Calificaciones :" + Arrays.toString(calificaciones));
         
-        //Sacamos la estadística de calificaciones
-        //hacemos un array de 10 para la estadística.
-        estadistica = new float[10];
-      
-        for (int i=0; i<10; i++){
-            float count = 0;
-            float sum = 0;
-            for (int j=0; j<control.length; j++){
-                if ((i < calificaciones[j]) && ((i+1) >= calificaciones[j] )) {
-                    sum += calificaciones[j];
-                    count += 1;
-                }
+        int[] contador = new int[10]; 
+
+        for (float nota : calificaciones) {
+            
+            int num = (int)Math.min(Math.floor(nota), 9); //por si acaso es 10, que no se quede fuera
+            if (nota >= 0) {
+                contador[num]++;
             }
-            if (count != 0){
-                estadistica[i] = ( (float)count / numAlumnos);
-            }else{ estadistica[i] = 0;}
-            double sol = (Math.round(estadistica[i] * 10000.0)) / 100.0;
-            System.out.println("Estadística nota tramo <=" 
-                + (i+1) + " = " 
-                + sol + "%");
+        }
+
+        System.out.println("\n--- ESTADISTICA ---");
+        for (int i = 0; i < 10; i++) {
+            double porcentaje = (contador[i] / (double)numAlumnos) * 100;
+            
+   
+            System.out.println("Porcentale: " + porcentaje);
         }
         
         ArrayList<Integer> listaAprobados = new ArrayList<>();
@@ -94,11 +90,7 @@ public class EjercicioArrays {
 
         System.out.println("Resumen de aprobados (nº lista): " + listaApr);
         System.out.println("Resumen de suspensos (nº lista): " + listaSus);
-        /*6. Suponer un vector de Calificaciones de tamaño 40 
-        (máximo de alumnos por clase), pero que solo almacena las
-        notas de 31 alumnos. Realizar un programa que permita insertar en
-        la posición 4 del vector la calificación de un nuevo 
-        alumno en clase al que supuestamente le corresponde como nota un 6.*/
+        
         calif = new double[40];
         for (int j=0; j<31; j++){
             calif[j] = (int)(Math.random()*11);
