@@ -1,4 +1,5 @@
 package ProblemaArray;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -79,50 +80,20 @@ public class EjercicioArrays {
                 + (i+1) + " = " 
                 + sol + "%");
         }
-        //Aprobados y suspensos
-        aprobados = new int[numAlumnos];
-        suspensos = new int[numAlumnos];
-        int countAprobados = 0;
-        int countSuspensos = 0;
-        for (int i=0; i<numAlumnos; i++){
-            if (calificaciones[i] < 5){
-                aprobados[i] = i;
-                countAprobados += 1;
-            }else{ 
-                suspensos[i] = i;
-                countSuspensos += 1;
-            }
-        }        
-        System.out.println("Relación de aprobados por nº de lista: " 
-                + Arrays.toString(aprobados));
-        System.out.println("Relación de suspensos por nº de lista: " 
-                + Arrays.toString(suspensos));
-        //Resumen de aprobados y suspensos
-        int i = 0;
-        int x = 0;
-        int[] a = new int[countAprobados];
-        int[] s = new int[countSuspensos];
-        while(i < aprobados.length){
-            if(aprobados[i] != 0){
-                a[x] = aprobados[i];
-                i++;
-                x++;
-            }else{ i++; }
-        }
         
-        i = x = 0;
-        while(i < suspensos.length){
-            if(suspensos[i] != 0){
-                s[x] = suspensos[i];
-                i++;
-                x++;
-            }else{ i++; }
+        ArrayList<Integer> listaAprobados = new ArrayList<>();
+        ArrayList<Integer> listaSuspensos = new ArrayList<>();
+
+        for (int j = 0; j < calificaciones.length; j++) {
+            if (calificaciones[j] >= 5) {
+                listaAprobados.add(j + 1); 
+            } else {
+                listaSuspensos.add(j + 1);
+            }
         }
-        System.out.println("Resumen  de aprobados por nº de lista: " 
-                + Arrays.toString(a));
-        System.out.println("Resumen  de aprobados por nº de lista: " 
-                + Arrays.toString(s));
-    
+
+        System.out.println("Resumen de aprobados (nº lista): " + listaApr);
+        System.out.println("Resumen de suspensos (nº lista): " + listaSus);
         /*6. Suponer un vector de Calificaciones de tamaño 40 
         (máximo de alumnos por clase), pero que solo almacena las
         notas de 31 alumnos. Realizar un programa que permita insertar en
